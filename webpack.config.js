@@ -10,15 +10,22 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         loader: "babel-loader",
-        options: { presets: ["@babel/env"] }
+        options: {presets: ["@babel/env"]}
       },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: "file-loader",
+        options: {
+          name: "assets/[name].[ext]"
+        }
       }
     ]
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
+  resolve: {extensions: ["*", ".js", ".jsx"]},
   output: {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/dist/",
